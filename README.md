@@ -1,2 +1,2 @@
 # MySpring
-一个用于了解spring底层的仓库
+一个用于仿写spring底层的仓库
