@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'war' // 添加 war 插件
+    id 'org.gretty' version '3.1.0' // 添加 gretty 插件
+}
+
+// 配置 gretty 插件
+gretty {
+    servletContainer = 'tomcat9' // 可以选择 tomcat9 或其他版本
+    httpPort = 8888 // 设置 Tomcat 的 HTTP 端口
+}
+
+group = 'org.clover'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // JUnit 5
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // SLF4J with Log4j12 binding
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    implementation 'org.slf4j:slf4j-log4j12:2.0.9'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    //servlet
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+}
+
+test {
+    useJUnitPlatform()
+}
